@@ -6,17 +6,17 @@ metadata:
     iconClass: icon-jboss
     tags: rhdm,decisionserver,jboss,authoring
     version: "1.1"
-    openshift.io/display-name: Red Hat Decision Manager 7.1 authoring environment (non-HA, persistent, with https)
+    openshift.io/display-name: Red Hat Decision Manager 7.2 authoring environment (non-HA, persistent, with https)
     openshift.io/provider-display-name: Red Hat, Inc.
-    description: Application template for a non-HA persistent authoring environment, for Red Hat Decision Manager 7.1
-    template.openshift.io/long-description: This template defines resources needed to develop and execute Rules on Red Hat Decision Manager 7.1, including application deployment configuration, secure and insecure http communication and persistent volume to store data that needs to survive to a restart.
-    template.openshift.io/documentation-url: https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.1/html/deploying_a_red_hat_decision_manager_7.1_authoring_environment_on_red_hat_openshift_container_platform/
+    description: Application template for a non-HA persistent authoring environment, for Red Hat Decision Manager 7.2
+    template.openshift.io/long-description: This template defines resources needed to develop and execute Rules on Red Hat Decision Manager 7.2, including application deployment configuration, secure and insecure http communication and persistent volume to store data that needs to survive to a restart.
+    template.openshift.io/documentation-url: https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.2/html/deploying_a_red_hat_decision_manager_7.2_authoring_environment_on_red_hat_openshift_container_platform/
     template.openshift.io/support-url: https://access.redhat.com
     template.openshift.io/bindable: "false"
   name: rhdm7-full-ng
 labels:
   template: rhdm7-full-ng
-  rhdm: "1.1"
+  rhdm: "2.1"
 message: |-
           A new persistent Decision Manager application have been created in your project.
           The username/password for accessing the Decision Central interface is
@@ -171,9 +171,9 @@ parameters:
   value: openshift
   required: true
 - displayName: KIE Server ImageStream Name
-  description: The name of the image stream to use for KIE server. Default is "rhdm71-kieserver-openshift".
+  description: The name of the image stream to use for KIE server. Default is "rhdm72-kieserver-openshift".
   name: KIE_SERVER_IMAGE_STREAM_NAME
-  value: "rhdm71-kieserver-openshift"
+  value: "rhdm72-kieserver-openshift"
   required: true
 - displayName: ImageStream Tag
   description: A named pointer to an image in an image stream. Default is "1.1".
@@ -603,7 +603,7 @@ objects:
         from:
           kind: ImageStreamTag
           namespace: "${RHT_IMAGE_STREAM_NAMESPACE}"
-          name: "rhdm71-decisioncentral-openshift:${IMAGE_STREAM_TAG}"
+          name: "rhdm72-decisioncentral-openshift:${IMAGE_STREAM_TAG}"
     - type: ConfigChange
     replicas: 1
     selector:
@@ -620,7 +620,7 @@ objects:
         terminationGracePeriodSeconds: 60
         containers:
         - name: "${APPLICATION_NAME}-rhdmcentr"
-          image: "rhdm71-decisioncentral-openshift:${IMAGE_STREAM_TAG}"
+          image: "rhdm72-decisioncentral-openshift:${IMAGE_STREAM_TAG}"
           imagePullPolicy: Always
           resources:
             limits:
