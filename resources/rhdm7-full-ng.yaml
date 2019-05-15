@@ -16,7 +16,7 @@ metadata:
   name: rhdm7-full-ng
 labels:
   template: rhdm7-full-ng
-  rhdm: "2.1"
+  rhdm: "1.1"
 message: |-
           A new persistent Decision Manager application have been created in your project.
           The username/password for accessing the Decision Central interface is
